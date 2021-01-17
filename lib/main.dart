@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medihub/layout.dart';
+import 'package:provider/provider.dart';
+import 'package:medihub/provider/checkup.dart';
 
 void main() {
   runApp(
@@ -10,14 +12,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text("Medihub"),
-          ),
+    return ChangeNotifierProvider<CheckUp>(
+      create: (context) => CheckUp(),
+      child: MaterialApp(
+        home: Scaffold(
+          body: Layout(),
         ),
-        body: Layout(),
       ),
     );
   }
