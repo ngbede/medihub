@@ -5,23 +5,7 @@ import 'package:medihub/models/symptoms.dart';
 import 'package:medihub/provider/checkup.dart';
 import 'package:provider/provider.dart';
 
-// ignore: must_be_immutable
-class SelectSymptoms extends StatefulWidget {
-  bool isSelected;
-  SelectSymptoms({this.isSelected = false});
-  @override
-  _SelectSymptomsState createState() => _SelectSymptomsState();
-}
-
-class _SelectSymptomsState extends State<SelectSymptoms> {
-  List<bool> _isChecked;
-
-  @override
-  void initState() {
-    super.initState();
-    _isChecked = List<bool>.filled(symptomsList.length, false);
-  }
-
+class SelectSymptoms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,13 +36,11 @@ class _SelectSymptomsState extends State<SelectSymptoms> {
                     return CheckboxListTile(
                       activeColor: Color(0XFF35D4C0),
                       title: Text(symptomsList[index]["Name"]),
-                      value: _isChecked[index],
+                      value:
+                          Provider.of<CheckUp>(context).getCheckList()[index],
                       onChanged: (newvalue) {
-                        setState(
-                          () {
-                            _isChecked[index] = newvalue;
-                          },
-                        );
+                        Provider.of<CheckUp>(context, listen: false)
+                            .checkItem(index, newvalue);
                       },
                     );
                   },
@@ -69,22 +51,9 @@ class _SelectSymptomsState extends State<SelectSymptoms> {
               flex: 1,
               child: GestureDetector(
                 onTap: () {
-                  int i = 0;
-                  Symptom mySymptom = Symptom();
-                  print(i);
-                  print(_isChecked);
-                  for (bool value in _isChecked) {
-                    if (value == true) {
-                      mySymptom.id = symptomsList[i]["ID"];
-                      mySymptom.name = symptomsList[i]["Name"];
-                      Provider.of<CheckUp>(context, listen: false)
-                          .setSymptoms(mySymptom);
-                    }
-                    print(value);
-                    i++;
-                  }
-                  print(Provider.of<CheckUp>(context, listen: false)
-                      .getSymptoms());
+                  print(
+                    Provider.of<CheckUp>(context, listen: false).getCheckList(),
+                  );
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(

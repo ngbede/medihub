@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:medihub/constants.dart';
 import 'package:medihub/models/symptoms.dart';
 
 class CheckUp with ChangeNotifier {
@@ -10,6 +11,12 @@ class CheckUp with ChangeNotifier {
   bool _nameEmpty = true;
   List<Symptom> _symptoms = [];
   bool _validated = false;
+  List<bool> _isChecked = List<bool>.filled(symptomsList.length, false);
+
+  void checkItem(int index, bool value) {
+    _isChecked[index] = value;
+    notifyListeners();
+  }
 
   void setGender(String gender) {
     _gender = gender;
@@ -70,4 +77,5 @@ class CheckUp with ChangeNotifier {
   bool getNameEmpty() => _nameEmpty;
   bool getPhoneEmpty() => _phoneEmpty;
   bool getValidate() => _validated;
+  List<bool> getCheckList() => _isChecked;
 }
