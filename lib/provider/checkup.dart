@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:medihub/constants.dart';
-import 'package:medihub/models/symptoms.dart';
 
 class CheckUp with ChangeNotifier {
   String _gender = "male";
@@ -9,12 +8,20 @@ class CheckUp with ChangeNotifier {
   int _yearOfBirth = 1970;
   bool _phoneEmpty = true;
   bool _nameEmpty = true;
-  List<Symptom> _symptoms = [];
+  Map<int, Map> _mySymptoms = {};
   bool _validated = false;
   List<bool> _isChecked = List<bool>.filled(symptomsList.length, false);
+  int _selectedSymptoms = 0;
 
   void checkItem(int index, bool value) {
     _isChecked[index] = value;
+    if (value) {
+      _selectedSymptoms++;
+      _mySymptoms.addAll({index: symptomsList[index]});
+    } else {
+      _selectedSymptoms--;
+      _mySymptoms.remove(index);
+    }
     notifyListeners();
   }
 
@@ -35,11 +42,6 @@ class CheckUp with ChangeNotifier {
 
   void setPhoneNumber(String number) {
     _phoneNumber = number;
-    notifyListeners();
-  }
-
-  void setSymptoms(Symptom symptom) {
-    _symptoms.add(symptom);
     notifyListeners();
   }
 
@@ -73,9 +75,10 @@ class CheckUp with ChangeNotifier {
   String getName() => _name;
   int getYearOfBirth() => _yearOfBirth;
   String getPhoneNumber() => _phoneNumber;
-  List<Symptom> getSymptoms() => _symptoms;
+  Map<int, Map> getSymptoms() => _mySymptoms;
   bool getNameEmpty() => _nameEmpty;
   bool getPhoneEmpty() => _phoneEmpty;
   bool getValidate() => _validated;
   List<bool> getCheckList() => _isChecked;
+  int getSelectedSymptoms() => _selectedSymptoms;
 }

@@ -11,7 +11,6 @@ class Diagnosis extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(
@@ -97,15 +96,11 @@ class Diagnosis extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 70.0,
                   ),
-                  child: Container(
-                    //width: 100,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Color(0XFF35D4C0),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  child: Card(
+                    elevation: 3.0,
+                    color: Color(0XFF35D4C0),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: Center(
                         child: Text(
                           "Next",
