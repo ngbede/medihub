@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:medihub/services/network.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -13,17 +12,6 @@ class _HomeState extends State<Home> {
     "Get Real Time Medical Diagnostics Today for free",
     "We assign you to our catalog of great Medical Doctors for treatment"
   ];
-  String url = "/symptoms";
-  Map<String, String> querystring = {"language": "en-gb", "format": "json"};
-  void printFile() async {
-    dynamic json = await Network.getJson(querystring);
-    print(json);
-  }
-
-  // @override
-  // void initState() {
-  //   printFile();
-  // }
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_tags/flutter_tags.dart';
+
 final List<Map> symptomsList = [
   {"ID": 188, "Name": "Abdominal guarding"},
   {"ID": 10, "Name": "Abdominal pain"},
@@ -274,5 +277,8 @@ final List<Map> symptomsList = [
 
 final List<String> genderList = ["male", "female"];
 final String lang = "en-gb";
+final GlobalKey<TagsState> tagKey = GlobalKey<TagsState>();
+final GlobalKey<TagsState> tagKey2 = GlobalKey<TagsState>();
+final GlobalKey<TagsState> tagKey3 = GlobalKey<TagsState>();
 
 enum Dropdown { gender, year }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medihub/constants.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-import 'package:medihub/models/symptoms.dart';
 import 'package:medihub/provider/checkup.dart';
 import 'package:medihub/screens/confirm.dart';
 import 'package:provider/provider.dart';
@@ -61,18 +60,14 @@ class SelectSymptoms extends StatelessWidget {
                   if (Provider.of<CheckUp>(context, listen: false)
                           .getSelectedSymptoms() >
                       0) {
-                    List<Symptom> userSymptoms = [];
+                    List<String> userSymptoms = [];
                     Provider.of<CheckUp>(context, listen: false)
                         .getSymptoms()
                         .forEach((key, value) {
-                      Symptom mySymptom = Symptom();
-                      mySymptom.id =
-                          Provider.of<CheckUp>(context, listen: false)
-                              .getSymptoms()[key]["ID"];
-                      mySymptom.name =
-                          Provider.of<CheckUp>(context, listen: false)
-                              .getSymptoms()[key]["Name"];
-                      userSymptoms.add(mySymptom);
+                      userSymptoms.add(
+                        Provider.of<CheckUp>(context, listen: false)
+                            .getSymptoms()[key]["Name"],
+                      );
                     });
                     Navigator.push(
                       context,

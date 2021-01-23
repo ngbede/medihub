@@ -6,8 +6,8 @@ class Network {
   // make request to get Json file
   static Future<dynamic> getJson(Map<String, String> queryString) async {
     try {
-      var uri = Uri.https(
-          "priaid-symptom-checker-v1.p.rapidapi.com", "/symptoms", queryString);
+      var uri = Uri.https("priaid-symptom-checker-v1.p.rapidapi.com",
+          "/diagnosis", queryString);
       var response = await http.get(
         uri,
         headers: {
