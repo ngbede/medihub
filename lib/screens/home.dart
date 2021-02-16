@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
@@ -16,22 +17,38 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0XFFC0F9E3),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
-              height: 30,
-            ),
             Padding(
-              padding: EdgeInsets.only(left: 42.0),
-              child: Text(
-                "About Us",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              padding: EdgeInsets.only(left: 20.0, top: 10.0),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    child: Icon(
+                      FluentIcons.person_20_filled,
+                      color: Color(0XFFC0F9EC),
+                      size: 50,
+                    ),
+                    backgroundColor: Colors.white,
+                    radius: 30,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Text(
+                      "Welcome User",
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            SizedBox(
-              height: 10,
             ),
             Container(
               height: 200,
@@ -40,7 +57,9 @@ class _HomeState extends State<Home> {
                   return Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("images/background.png"),
+                        colorFilter: new ColorFilter.mode(
+                            Colors.black.withOpacity(0.2), BlendMode.dstATop),
+                        image: AssetImage("images/home_doc_nurse.jpg"),
                         fit: BoxFit.fill,
                       ),
                       borderRadius: BorderRadius.circular(20),
@@ -48,7 +67,10 @@ class _HomeState extends State<Home> {
                     child: Center(
                       child: Text(
                         "${texts[index]}",
-                        style: TextStyle(fontSize: 30),
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: Color(0XFF85ADFF),
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -61,6 +83,26 @@ class _HomeState extends State<Home> {
                 pagination: SwiperPagination(),
               ),
             ),
+            Row(
+              children: [
+                Expanded(
+                  child: Image.asset("images/surgeon.png"),
+                ),
+                Expanded(
+                  child: Container(
+                    //decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                    child: Card(
+                      elevation: 5.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                            "Medihub is brought to you by a team of passionate developers who are working ever so hard to ensure the needs of the users are met. In case you experience any issues while using the app, do not hesitate to reach out to us by sending an mail to medihub@support.com. Please note any donations you may have is kindly received."),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
