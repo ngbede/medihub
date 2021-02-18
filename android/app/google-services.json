@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "540851413495",
+    "project_id": "medihub-13ba2",
+    "storage_bucket": "medihub-13ba2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540851413495:android:89f8bdcbc3de0240fb8ef2",
+        "android_client_info": {
+          "package_name": "com.example.medihub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540851413495-hsocol18p0730h9jd4urmpct9hd0vj10.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAjfJjGRTr9DxkvYov_SpxlRNay4T-rZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540851413495-hsocol18p0730h9jd4urmpct9hd0vj10.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
