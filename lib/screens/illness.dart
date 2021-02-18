@@ -25,11 +25,12 @@ class MedicalDiagnosis extends StatelessWidget {
                     .getPredictionJson()[index]["Specialisation"];
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color(0XFFFFFFFF),
-                  borderRadius: BorderRadius.circular(20),
-                ),
+              child: Card(
+                // decoration: BoxDecoration(
+                //   color: Color(0XFFFFFFFF),
+                //   borderRadius: BorderRadius.circular(20),
+                // ),
+                elevation: 5.0,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
@@ -99,7 +100,15 @@ class MedicalDiagnosis extends StatelessWidget {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Tags(
-                          key: index == 0 ? tagKey2 : tagKey3,
+                          key: index == 0
+                              ? tagKey2
+                              : index == 1
+                                  ? tagKey3
+                                  : index == 2
+                                      ? tagKey4
+                                      : index == 3
+                                          ? tagKey5
+                                          : tagKey6,
                           itemCount: specialisations.length,
                           columns: 3,
                           itemBuilder: (index) {

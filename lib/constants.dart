@@ -280,5 +280,8 @@ final String lang = "en-gb";
 final GlobalKey<TagsState> tagKey = GlobalKey<TagsState>();
 final GlobalKey<TagsState> tagKey2 = GlobalKey<TagsState>();
 final GlobalKey<TagsState> tagKey3 = GlobalKey<TagsState>();
+final GlobalKey<TagsState> tagKey4 = GlobalKey<TagsState>();
+final GlobalKey<TagsState> tagKey5 = GlobalKey<TagsState>();
+final GlobalKey<TagsState> tagKey6 = GlobalKey<TagsState>();
 
 enum Dropdown { gender, year }
