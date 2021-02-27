@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:medihub/layout.dart';
+import 'package:medihub/models/useraccount.dart';
 import 'package:medihub/provider/prediction.dart';
+import 'package:medihub/provider/progress.dart';
 import 'package:provider/provider.dart';
 import 'package:medihub/provider/checkup.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     MyApp(),
   );
@@ -21,11 +26,15 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<Prediction>(
           create: (_) => Prediction(),
         ),
+        ChangeNotifierProvider<UserAccount>(
+          create: (_) => UserAccount(),
+        ),
+        ChangeNotifierProvider<Spin>(
+          create: (_) => Spin(),
+        ),
       ],
       child: MaterialApp(
-        home: Scaffold(
-          body: Layout(),
-        ),
+        home: Layout(),
       ),
     );
   }
