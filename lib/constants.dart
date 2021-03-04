@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 
@@ -285,3 +287,7 @@ final GlobalKey<TagsState> tagKey5 = GlobalKey<TagsState>();
 final GlobalKey<TagsState> tagKey6 = GlobalKey<TagsState>();
 
 enum Dropdown { gender, year }
+enum Field { firstName, lastName, phoneNumber, email, password }
+
+final FirebaseAuth auth = FirebaseAuth.instance;
+final FirebaseFirestore store = FirebaseFirestore.instance;

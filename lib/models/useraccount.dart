@@ -34,11 +34,10 @@ class UserAccount with ChangeNotifier {
 
   bool fieldsNotNull() {
     bool emptyField = true;
-    if (_email != null &&
-        _firstName != null &&
-        _lastName != null &&
-        _password != null &&
-        _phoneNumber != null) {
+    if (_email.isNotEmpty &&
+        _firstName.isNotEmpty & _lastName.isNotEmpty &&
+        _password.isNotEmpty &&
+        _phoneNumber.isNotEmpty) {
       emptyField = false;
     }
     return emptyField;

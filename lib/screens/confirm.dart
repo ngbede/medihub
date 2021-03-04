@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medihub/config/textstyles.dart';
 import 'package:medihub/provider/checkup.dart';
 import 'package:medihub/provider/prediction.dart';
-import 'package:medihub/screens/illness.dart';
+import 'package:medihub/screens/result.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:medihub/services/network.dart';
@@ -62,16 +62,16 @@ class Confirmation extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      AlignInfo(
-                        name: "Phone Number",
-                        infoStyle: confirmStyleHeading,
-                      ),
-                      AlignInfo(
-                        name: Provider.of<CheckUp>(context).getPhoneNumber(),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      // AlignInfo(
+                      //   name: "Phone Number",
+                      //   infoStyle: confirmStyleHeading,
+                      // ),
+                      // AlignInfo(
+                      //   name: Provider.of<CheckUp>(context).getPhoneNumber(),
+                      // ),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
                       AlignInfo(
                         name: "Gender",
                         infoStyle: confirmStyleHeading,
