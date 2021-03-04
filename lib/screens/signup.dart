@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:medihub/layout.dart';
 import 'package:medihub/screens/login.dart';
 import 'package:medihub/widgets/inputfield.dart';
 import 'package:provider/provider.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:medihub/constants.dart';
+import 'package:medihub/models/useraccount.dart';
 
 //TODO:handle email/account already in use exception
 class Register extends StatelessWidget {
@@ -23,194 +26,196 @@ class Register extends StatelessWidget {
                   fit: BoxFit.fitHeight,
                   alignment: Alignment.topLeft),
             ),
-            child: Padding(
-              padding:
-                  EdgeInsets.only(left: 15.0, right: 15.0, top: 50, bottom: 50),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                elevation: 20,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 30.0,
+                    right: 30.0,
+                    top: 10.0,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Create Account",
-                              style: TextStyle(fontSize: 25),
-                            ),
-                            CircleAvatar(
-                              backgroundImage:
-                                  AssetImage("images/playstore.png"),
-                              radius: 30,
-                            ),
-                          ],
-                        ),
+                      Text(
+                        "Create Account",
+                        style: TextStyle(fontSize: 25),
                       ),
-                      Divider(),
-                      Row(
-                        children: [
-                          Expanded(
-                              child: InputField(
-                            hint: "First Name",
-                            //dataField: Field.name,
-                            keyboard: TextInputType.text,
-                            horLen: 10,
-                          )),
-                          Expanded(
-                            child: InputField(
-                              hint: "Last Name",
-                              //dataField: Field.surName,
-                              horLen: 10,
-                              keyboard: TextInputType.text,
-                            ),
-                          )
-                        ],
+                      CircleAvatar(
+                        backgroundImage: AssetImage("images/playstore.png"),
+                        radius: 30,
                       ),
-
-                      InputField(
-                        hint: "Email Address",
-                        // dataField: Field.email,
-                        horLen: 10,
-                        keyboard: TextInputType.emailAddress,
-                      ),
-                      InputField(
-                        hint: "Phone Number",
-                        // dataField: Field.phone,
-                        horLen: 10,
-                        keyboard: TextInputType.phone,
-                      ),
-                      InputField(
-                        hint: "Password",
-                        //  dataField: Field.password,
-                        keyboard: TextInputType.visiblePassword,
-                        horLen: 10,
-                        iconVisible: true,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10.0),
-                        child: Text(
-                          "Passwords must be at least 6 characters.",
-                          style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          print("signup action");
-                          // print("Sign up button pressed");
-                          // if (Provider.of<Account>(context, listen: false)
-                          //     .fieldsNotNull()) {
-                          //   Provider.of<Spin>(context, listen: false)
-                          //       .changeWheel();
-                          //   try {
-                          //     final _newUser = await auth()
-                          //         .createUserWithEmailAndPassword(
-                          //             email: Provider.of<Account>(context,
-                          //                     listen: false)
-                          //                 .getUser()
-                          //                 .email,
-                          //             password: Provider.of<Account>(context,
-                          //                     listen: false)
-                          //                 .getUser()
-                          //                 .password);
-                          //     //For every new user store their additional info in cloud firestore
-                          //     store().collection("users").add(
-                          //       {
-                          //         "email":
-                          //             Provider.of<Account>(context, listen: false)
-                          //                 .getUser()
-                          //                 .email,
-                          //         "id": _newUser.user.uid,
-                          //         "name":
-                          //             Provider.of<Account>(context, listen: false)
-                          //                 .getUser()
-                          //                 .name,
-                          //         "surname":
-                          //             Provider.of<Account>(context, listen: false)
-                          //                 .getUser()
-                          //                 .surName,
-                          //         "phoneNumber":
-                          //             Provider.of<Account>(context, listen: false)
-                          //                 .getUser()
-                          //                 .phoneNumber
-                          //       },
-                          //     );
-                          //     if (_newUser != null) {
-                          //       Provider.of<Spin>(context, listen: false)
-                          //           .changeWheel();
-                          //       Navigator.pushNamed(context, "layout");
-                          //     }
-                          //   } catch (e) {
-                          //     print(e);
-                          //   }
-                          // }
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Color(0XFF35D4C0),
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 15),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 50, vertical: 10),
-                            child: Text(
-                              "Create Account",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Already have an account?",
-                            style: TextStyle(color: Colors.grey, fontSize: 20),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Login(),
-                                  ));
-                            },
-                            child: Text(
-                              " Login",
-                              style: TextStyle(
-                                  color: Colors.teal,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ],
-                      ),
-                      // Text(
-                      //   "By signing up you accept our terms and conditions & privacy policy",
-                      //   textAlign: TextAlign.center,
-                      //   style: TextStyle(color: Color(0XFFCDD8EA)),
-                      // )
                     ],
                   ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    // shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(30)),
+                    // elevation: 5,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 15.0,
+                        vertical: 30,
+                      ),
+                      child: Column(
+                        //mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        // crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                  child: InputField(
+                                hint: "First Name",
+                                keyboard: TextInputType.text,
+                                fieldType: Field.firstName,
+                                horLen: 10,
+                              )),
+                              Expanded(
+                                child: InputField(
+                                  hint: "Last Name",
+                                  fieldType: Field.lastName,
+                                  horLen: 10,
+                                  keyboard: TextInputType.text,
+                                ),
+                              )
+                            ],
+                          ),
+                          InputField(
+                            hint: "Email Address",
+                            fieldType: Field.email,
+                            horLen: 10,
+                            keyboard: TextInputType.emailAddress,
+                          ),
+                          InputField(
+                            hint: "Phone Number",
+                            horLen: 10,
+                            fieldType: Field.phoneNumber,
+                            keyboard: TextInputType.phone,
+                          ),
+                          InputField(
+                            hint: "Password",
+                            fieldType: Field.password,
+                            keyboard: TextInputType.visiblePassword,
+                            horLen: 10,
+                            iconVisible: true,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Already have an account?",
+                                style: TextStyle(
+                                  color: Colors.black45,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Login(),
+                                      ));
+                                },
+                                child: Text(
+                                  " Login",
+                                  style: TextStyle(
+                                      color: Colors.teal,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    // if (Provider.of<UserAccount>(context, listen: false)
+                    //     .fieldsNotNull()) {
+                    // Provider.of<Spin>(context, listen: false)
+                    //     .changeWheel();
+                    print("In");
+                    try {
+                      final _newUser =
+                          await auth.createUserWithEmailAndPassword(
+                        email: Provider.of<UserAccount>(context, listen: false)
+                            .getEmail(),
+                        password:
+                            Provider.of<UserAccount>(context, listen: false)
+                                .getPassword(),
+                      );
+                      //For every new user store their additional info in cloud firestore
+
+                      if (_newUser != null) {
+                        // Provider.of<Spin>(context, listen: false)
+                        //     .changeWheel();
+
+                        store.collection("users").add(
+                          {
+                            "email": Provider.of<UserAccount>(
+                              context,
+                              listen: false,
+                            ).getEmail(),
+                            "userId": _newUser.user.uid,
+                            "firstName": Provider.of<UserAccount>(
+                              context,
+                              listen: false,
+                            ).getFirstName(),
+                            "lastName": Provider.of<UserAccount>(
+                              context,
+                              listen: false,
+                            ).getLastName(),
+                            "phoneNumber": Provider.of<UserAccount>(
+                              context,
+                              listen: false,
+                            ).getPhoneNumber(),
+                          },
+                        );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Layout(),
+                          ),
+                        );
+                      }
+                    } catch (e) {
+                      print("Hello $e"); //TODO: handle login errors
+                    }
+                  },
+                  // },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color(0XFF35D4C0),
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 20.0, horizontal: 100),
+                      child: Text(
+                        "REGISTER",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -218,3 +223,5 @@ class Register extends StatelessWidget {
     );
   }
 }
+
+// [firebase_auth/unknown] com.google.firebase.FirebaseException: An internal error has occurred. [ Unable to resolve host "www.googleapis.com":No address associated with hostname ]

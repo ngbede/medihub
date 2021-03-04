@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:medihub/models/useraccount.dart';
 import 'package:provider/provider.dart';
 import 'package:medihub/provider/checkup.dart';
+
+import '../constants.dart';
 
 class InputField extends StatefulWidget {
   final String hint;
   final TextInputType keyboard;
+  final Field fieldType;
   final bool iconVisible;
   final double horLen;
   final double verLen;
+  final int maxlen;
   InputField({
     @required this.hint,
     @required this.keyboard,
+    this.fieldType,
     this.horLen = 20.0,
     this.verLen = 10.0,
     this.iconVisible = false,
+    this.maxlen,
   });
 
   @override
@@ -44,12 +51,25 @@ class _InputFieldState extends State<InputField> {
         vertical: widget.verLen,
       ),
       child: TextField(
-        maxLength: widget.keyboard == TextInputType.phone ? 11 : 30,
+        maxLength: widget.maxlen,
         controller: _controller,
         onChanged: (value) {
           // check for type of keboard to assign value to
-          if (widget.keyboard == TextInputType.phone) {
-            Provider.of<CheckUp>(context, listen: false).setPhoneNumber(value);
+          // if (widget.keyboard == TextInputType.phone) {
+          //   Provider.of<CheckUp>(context, listen: false).setPhoneNumber(value);
+          // } else
+          if (widget.fieldType == Field.email) {
+            Provider.of<UserAccount>(context, listen: false).setEmail(value);
+          } else if (widget.fieldType == Field.firstName) {
+            Provider.of<UserAccount>(context, listen: false)
+                .setFirstName(value);
+          } else if (widget.fieldType == Field.lastName) {
+            Provider.of<UserAccount>(context, listen: false).setLastName(value);
+          } else if (widget.fieldType == Field.phoneNumber) {
+            Provider.of<UserAccount>(context, listen: false)
+                .setPhoneNumber(value);
+          } else if (widget.fieldType == Field.password) {
+            Provider.of<UserAccount>(context, listen: false).setPassword(value);
           } else {
             Provider.of<CheckUp>(context, listen: false).setName(value);
           }
@@ -78,7 +98,7 @@ class _InputFieldState extends State<InputField> {
                   child: hidePassword
                       ? Icon(
                           Icons.visibility_off_sharp,
-                          color: Colors.grey,
+                          color: Colors.white,
                         )
                       : Icon(
                           Icons.visibility_sharp,
@@ -88,7 +108,7 @@ class _InputFieldState extends State<InputField> {
               : null,
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0XFF35D4C0),
+              color: Color(0XFF494949),
             ),
           ),
         ),
