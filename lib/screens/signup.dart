@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medihub/admin/screen/doclogin.dart';
 import 'package:medihub/layout.dart';
 import 'package:medihub/screens/login.dart';
 import 'package:medihub/widgets/inputfield.dart';
@@ -42,9 +43,19 @@ class Register extends StatelessWidget {
                         "Create Account",
                         style: TextStyle(fontSize: 25),
                       ),
-                      CircleAvatar(
-                        backgroundImage: AssetImage("images/playstore.png"),
-                        radius: 30,
+                      GestureDetector(
+                        onDoubleTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DocLogin(),
+                            ),
+                          );
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage("images/playstore.png"),
+                          radius: 30,
+                        ),
                       ),
                     ],
                   ),
@@ -161,8 +172,7 @@ class Register extends StatelessWidget {
                       if (_newUser != null) {
                         // Provider.of<Spin>(context, listen: false)
                         //     .changeWheel();
-
-                        store.collection("users").add(
+                        store.collection("users").doc(auth.currentUser.uid).set(
                           {
                             "email": Provider.of<UserAccount>(
                               context,
@@ -223,5 +233,3 @@ class Register extends StatelessWidget {
     );
   }
 }
-
-// [firebase_auth/unknown] com.google.firebase.FirebaseException: An internal error has occurred. [ Unable to resolve host "www.googleapis.com":No address associated with hostname ]

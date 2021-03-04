@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medihub/admin/screen/doclogin.dart';
 import 'package:medihub/layout.dart';
 import 'package:medihub/screens/signup.dart';
 import 'package:medihub/widgets/inputfield.dart';
@@ -40,9 +41,19 @@ class Login extends StatelessWidget {
                         "Login to Medihub",
                         style: TextStyle(fontSize: 25),
                       ),
-                      CircleAvatar(
-                        backgroundImage: AssetImage("images/playstore.png"),
-                        radius: 30,
+                      GestureDetector(
+                        onDoubleTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DocLogin(),
+                            ),
+                          );
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage("images/playstore.png"),
+                          radius: 30,
+                        ),
                       ),
                     ],
                   ),
