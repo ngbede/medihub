@@ -29,6 +29,8 @@ class _LayoutState extends State<Layout> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0XFFC0F9E3),
+        resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: false,
         body: _screens.elementAt(_selectedScreen),
         bottomNavigationBar: BottomNavigationBar(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:medihub/layout.dart';
 import 'package:medihub/models/useraccount.dart';
 import 'package:medihub/provider/prediction.dart';
 import 'package:medihub/provider/progress.dart';
+import 'package:medihub/screens/login.dart';
 import 'package:provider/provider.dart';
 import 'package:medihub/provider/checkup.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: Layout(),
+        home: Login(),
       ),
     );
   }

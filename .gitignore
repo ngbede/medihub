@@ -45,3 +45,5 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+documentation
+images/My Palettes
