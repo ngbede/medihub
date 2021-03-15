@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:medihub/screens/appointments.dart';
 import 'package:medihub/screens/home.dart';
-import 'package:medihub/screens/settings.dart';
+import 'package:medihub/screens/diaghistory.dart';
 import 'package:medihub/screens/diagnosis.dart';
 
 class Layout extends StatefulWidget {
@@ -14,7 +15,8 @@ class _LayoutState extends State<Layout> {
   List<Widget> _screens = [
     Home(),
     Diagnosis(),
-    Settings(),
+    History(),
+    Appointments(),
   ];
 
   void onTapChangeScreen(int index) {
@@ -45,7 +47,11 @@ class _LayoutState extends State<Layout> {
             ),
             BottomNavigationBarItem(
               icon: Icon(FluentIcons.person_20_regular),
-              label: "Account",
+              label: "Medical History",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(FluentIcons.clock_20_regular),
+              label: "Appointments",
             ),
           ],
           selectedItemColor: Color(0XFF35D4C0),
