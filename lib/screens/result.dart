@@ -20,8 +20,9 @@ class MedicalDiagnosis extends StatelessWidget {
           actions: [
             GestureDetector(
               onTap: () async {
+                // name each diagnosis history document using the users ID
                 try {
-                  await store.collection("diaghistory").add(
+                  await store.collection("diagnosisHistory").add(
                     {
                       "patientName":
                           Provider.of<CheckUp>(context, listen: false)
