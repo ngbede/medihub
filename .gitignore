@@ -47,3 +47,4 @@ app.*.symbols
 app.*.map.json
 documentation
 images/My Palettes
+lib/admin
