@@ -43,112 +43,94 @@ class Register extends StatelessWidget {
                         "Create Account",
                         style: TextStyle(fontSize: 25),
                       ),
-                      GestureDetector(
-                        onDoubleTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DocLogin(),
-                            ),
-                          );
-                        },
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage("images/playstore.png"),
-                          radius: 30,
-                        ),
+                      CircleAvatar(
+                        backgroundImage: AssetImage("images/playstore.png"),
+                        radius: 30,
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    // shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(30)),
-                    // elevation: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 15.0,
-                        vertical: 30,
-                      ),
-                      child: Column(
-                        //mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        // crossAxisAlignment: CrossAxisAlignment.stretch,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0,
+                    vertical: 20,
+                  ),
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    // crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Row(
                         children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: InputField(
-                                hint: "First Name",
-                                keyboard: TextInputType.text,
-                                fieldType: Field.firstName,
-                                horLen: 10,
-                              )),
-                              Expanded(
-                                child: InputField(
-                                  hint: "Last Name",
-                                  fieldType: Field.lastName,
-                                  horLen: 10,
-                                  keyboard: TextInputType.text,
-                                ),
-                              )
-                            ],
-                          ),
-                          InputField(
-                            hint: "Email Address",
-                            fieldType: Field.email,
+                          Expanded(
+                              child: InputField(
+                            hint: "First Name",
+                            keyboard: TextInputType.text,
+                            fieldType: Field.firstName,
                             horLen: 10,
-                            keyboard: TextInputType.emailAddress,
-                          ),
-                          InputField(
-                            hint: "Phone Number",
-                            horLen: 10,
-                            fieldType: Field.phoneNumber,
-                            keyboard: TextInputType.phone,
-                          ),
-                          InputField(
-                            hint: "Password",
-                            fieldType: Field.password,
-                            keyboard: TextInputType.visiblePassword,
-                            horLen: 10,
-                            iconVisible: true,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Already have an account?",
-                                style: TextStyle(
-                                  color: Colors.black45,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Login(),
-                                      ));
-                                },
-                                child: Text(
-                                  " Login",
-                                  style: TextStyle(
-                                      color: Colors.teal,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              )
-                            ],
-                          ),
+                          )),
+                          Expanded(
+                            child: InputField(
+                              hint: "Last Name",
+                              fieldType: Field.lastName,
+                              horLen: 10,
+                              keyboard: TextInputType.text,
+                            ),
+                          )
                         ],
                       ),
-                    ),
+                      InputField(
+                        hint: "Email Address",
+                        fieldType: Field.email,
+                        horLen: 10,
+                        keyboard: TextInputType.emailAddress,
+                      ),
+                      InputField(
+                        hint: "Phone Number",
+                        horLen: 10,
+                        fieldType: Field.phoneNumber,
+                        keyboard: TextInputType.phone,
+                      ),
+                      InputField(
+                        hint: "Password",
+                        fieldType: Field.password,
+                        keyboard: TextInputType.visiblePassword,
+                        horLen: 10,
+                        iconVisible: true,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Already have an account?",
+                            style: TextStyle(
+                              color: Colors.black45,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Login(),
+                                  ));
+                            },
+                            child: Text(
+                              " Login",
+                              style: TextStyle(
+                                  color: Colors.teal,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
                   ),
                 ),
                 GestureDetector(

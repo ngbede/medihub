@@ -41,82 +41,63 @@ class Login extends StatelessWidget {
                         "Login to Medihub",
                         style: TextStyle(fontSize: 25),
                       ),
-                      GestureDetector(
-                        onDoubleTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DocLogin(),
-                            ),
-                          );
-                        },
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage("images/playstore.png"),
-                          radius: 30,
-                        ),
+                      CircleAvatar(
+                        backgroundImage: AssetImage("images/playstore.png"),
+                        radius: 30,
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Container(
-                    // shape: RoundedRectangleBorder(
-                    //   borderRadius: BorderRadius.circular(30),
-                    // ),
-                    // elevation: 5,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 15.0,
-                        vertical: 30.0,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.0,
+                    vertical: 20.0,
+                  ),
+                  child: Column(
+                    children: [
+                      InputField(
+                        hint: "E-mail",
+                        keyboard: TextInputType.emailAddress,
+                        fieldType: Field.email,
+                        // dataField: Field.email,
                       ),
-                      child: Column(
+                      InputField(
+                        hint: "Password",
+                        keyboard: TextInputType.visiblePassword,
+                        fieldType: Field.password,
+                        //dataField: Field.password,
+                        iconVisible: true,
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          InputField(
-                            hint: "E-mail",
-                            keyboard: TextInputType.emailAddress,
-                            fieldType: Field.email,
-                            // dataField: Field.email,
+                          Text(
+                            "Are you a new user?",
+                            style: TextStyle(
+                              color: Colors.black45,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                          InputField(
-                            hint: "Password",
-                            keyboard: TextInputType.visiblePassword,
-                            fieldType: Field.password,
-                            //dataField: Field.password,
-                            iconVisible: true,
-                          ),
-                          SizedBox(height: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Are you a new user?",
-                                style: TextStyle(
-                                  color: Colors.black45,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Register()));
+                            },
+                            child: Text(
+                              " Sign Up",
+                              style: TextStyle(
+                                  color: Colors.teal,
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Register()));
-                                },
-                                child: Text(
-                                  " Sign Up",
-                                  style: TextStyle(
-                                      color: Colors.teal,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              )
-                            ],
-                          ),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
                         ],
                       ),
-                    ),
+                    ],
                   ),
                 ),
                 GestureDetector(

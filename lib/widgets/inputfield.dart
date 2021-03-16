@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medihub/admin/models/doctor.dart';
 import 'package:medihub/models/useraccount.dart';
 import 'package:provider/provider.dart';
 import 'package:medihub/provider/checkup.dart';
@@ -70,12 +71,19 @@ class _InputFieldState extends State<InputField> {
                 .setPhoneNumber(value);
           } else if (widget.fieldType == Field.password) {
             Provider.of<UserAccount>(context, listen: false).setPassword(value);
-          } else {
+          }
+          // else if (widget.fieldType == Field.docId) {
+          //   Provider.of<Doctor>(context, listen: false).setDocId(value);
+          // } else if (widget.fieldType == Field.docPassword) {
+          //   Provider.of<Doctor>(context, listen: false).setPassword(value);
+          // }
+          else {
             Provider.of<CheckUp>(context, listen: false).setName(value);
           }
         },
         decoration: InputDecoration(
           hintText: widget.hint,
+          // TODO: add better error handling use cases
           errorText: Provider.of<CheckUp>(context).getValidate() == true
               ? widget.keyboard == TextInputType.text
                   ? Provider.of<CheckUp>(context).getNameEmpty()

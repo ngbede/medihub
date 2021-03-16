@@ -279,15 +279,23 @@ final List<Map> symptomsList = [
 
 final List<String> genderList = ["male", "female"];
 final String lang = "en-gb";
-final GlobalKey<TagsState> tagKey = GlobalKey<TagsState>();
-final GlobalKey<TagsState> tagKey2 = GlobalKey<TagsState>();
-final GlobalKey<TagsState> tagKey3 = GlobalKey<TagsState>();
-final GlobalKey<TagsState> tagKey4 = GlobalKey<TagsState>();
-final GlobalKey<TagsState> tagKey5 = GlobalKey<TagsState>();
-final GlobalKey<TagsState> tagKey6 = GlobalKey<TagsState>();
+GlobalKey<TagsState> tagKey = GlobalKey<TagsState>();
+GlobalKey<TagsState> tagKey2 = GlobalKey<TagsState>();
+GlobalKey<TagsState> tagKey3 = GlobalKey<TagsState>();
+GlobalKey<TagsState> tagKey4 = GlobalKey<TagsState>();
+GlobalKey<TagsState> tagKey5 = GlobalKey<TagsState>();
+GlobalKey<TagsState> tagKey6 = GlobalKey<TagsState>();
 
 enum Dropdown { gender, year }
-enum Field { firstName, lastName, phoneNumber, email, password }
+enum Field {
+  firstName,
+  lastName,
+  phoneNumber,
+  email,
+  password,
+//  docId,
+//  docPassword
+}
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 final FirebaseFirestore store = FirebaseFirestore.instance;
