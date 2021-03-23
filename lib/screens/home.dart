@@ -95,9 +95,12 @@ class _HomeState extends State<Home> {
                   ),
                   elevation: 5.0,
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Text(
-                        "Medihub is brought to you by a team of passionate developers who are working ever so hard to ensure the needs of the users are met. In case you experience any issues while using the app, do not hesitate to reach out to us by sending an mail to medihub@support.com. Please note any donations you may have is kindly received."),
+                      "Medihub is brought to you by a team of passionate developers who are working hard to ensure the needs of the users are met. In case you experience any issues while using the app, do not hesitate to reach out to us by sending a mail to medihub@support.com.",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, letterSpacing: 1),
+                    ),
                   ),
                 ),
               ),
