@@ -17,7 +17,7 @@ DropdownButton androidMenu(BuildContext context, Dropdown property) {
       genders.add(option);
     }
   } else {
-    for (int year = 1930; year <= 2021; year++) {
+    for (int year = 1950; year <= 2021; year++) {
       DropdownMenuItem option = DropdownMenuItem(
         child: Text("$year"),
         value: year,
