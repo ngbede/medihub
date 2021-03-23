@@ -8,7 +8,7 @@ import 'package:flutter_tags/flutter_tags.dart';
 import 'package:medihub/services/network.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:medihub/widgets/aligninfo.dart';
-import 'package:medihub/constants.dart';
+//import 'package:medihub/constants.dart';
 
 // TODO: Refactor code
 class Confirmation extends StatelessWidget {
@@ -17,6 +17,7 @@ class Confirmation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<TagsState> tagKey = GlobalKey<TagsState>();
     return ModalProgressHUD(
       inAsyncCall: Provider.of<Prediction>(context).getShowHud(),
       progressIndicator: CircularProgressIndicator(
@@ -62,16 +63,6 @@ class Confirmation extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      // AlignInfo(
-                      //   name: "Phone Number",
-                      //   infoStyle: confirmStyleHeading,
-                      // ),
-                      // AlignInfo(
-                      //   name: Provider.of<CheckUp>(context).getPhoneNumber(),
-                      // ),
-                      // SizedBox(
-                      //   height: 10,
-                      // ),
                       AlignInfo(
                         name: "Gender",
                         infoStyle: confirmStyleHeading,
@@ -95,7 +86,9 @@ class Confirmation extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      Divider(),
+                      Divider(
+                        thickness: 1.5,
+                      ),
                       AlignInfo(
                         name: "Symptoms",
                         infoStyle: confirmStyleHeading,
@@ -139,58 +132,76 @@ class Confirmation extends StatelessWidget {
                   "year_of_birth":
                       "${Provider.of<CheckUp>(context, listen: false).getYearOfBirth()}",
                 };
-                if (Provider.of<Prediction>(context, listen: false)
-                        .getPredictionJson() ==
-                    null) {
-                  try {
-                    List<dynamic> jsonData =
-                        await Network.getJson(queryStrings);
-                    if (jsonData != null) {
-                      Provider.of<Prediction>(context, listen: false)
-                          .setPredictedDiagnosisJson(jsonData);
-                      Provider.of<Prediction>(context, listen: false)
-                          .showModalHud();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MedicalDiagnosis(),
-                        ),
-                      );
-                    } else {
-                      print("Unable to get the Data at this time");
-                    }
-                  } catch (e) {
-                    print(e);
-                  }
-                } else {
-                  print("from Provider");
-                  print(
+                try {
+                  List<dynamic> jsonData = await Network.getJson(queryStrings);
+                  if (jsonData != null) {
                     Provider.of<Prediction>(context, listen: false)
-                        .getPredictionJson(),
-                  );
-                  Provider.of<Prediction>(context, listen: false)
-                      .showModalHud();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MedicalDiagnosis(),
-                    ),
-                  );
+                        .setPredictedDiagnosisJson(jsonData);
+                    Provider.of<Prediction>(context, listen: false)
+                        .showModalHud();
+                    print(
+                      Provider.of<Prediction>(context, listen: false)
+                          .getPredictionJson(),
+                    );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MedicalDiagnosis(
+                          userSymptomsList: userSymptomsList,
+                        ),
+                      ),
+                    );
+                  } else {
+                    print("Unable to get the Data at this time");
+                    Provider.of<Prediction>(context, listen: false)
+                        .showModalHud();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MedicalDiagnosis(
+                          userSymptomsList: userSymptomsList,
+                        ),
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  print(e);
                 }
+
+                //  else {
+                //   print("from Provider");
+                //   print(
+                //     Provider.of<Prediction>(context, listen: false)
+                //         .getPredictionJson(),
+                //   );
+                //   Provider.of<Prediction>(context, listen: false)
+                //       .showModalHud();
+                //   Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //       builder: (context) => MedicalDiagnosis(
+                //         userSymptomsList: userSymptomsList,
+                //       ),
+                //     ),
+                //   );
+                // }
               },
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 70.0),
-                child: Card(
-                  elevation: 3.0,
-                  color: Color(0XFF35D4C0),
+                padding: EdgeInsets.symmetric(horizontal: 50.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0XFF35D4C0),
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  margin: EdgeInsets.symmetric(vertical: 20),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 15.0,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Get Diagnosis",
-                        style: TextStyle(fontSize: 20),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+                    child: Text(
+                      "GET DIAGNOSIS",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
                       ),
                     ),
                   ),

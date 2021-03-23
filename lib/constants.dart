@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_tags/flutter_tags.dart';
 
 final List<Map> symptomsList = [
   {"ID": 188, "Name": "Abdominal guarding"},
@@ -279,12 +277,6 @@ final List<Map> symptomsList = [
 
 final List<String> genderList = ["male", "female"];
 final String lang = "en-gb";
-GlobalKey<TagsState> tagKey = GlobalKey<TagsState>();
-GlobalKey<TagsState> tagKey2 = GlobalKey<TagsState>();
-GlobalKey<TagsState> tagKey3 = GlobalKey<TagsState>();
-GlobalKey<TagsState> tagKey4 = GlobalKey<TagsState>();
-GlobalKey<TagsState> tagKey5 = GlobalKey<TagsState>();
-GlobalKey<TagsState> tagKey6 = GlobalKey<TagsState>();
 
 enum Dropdown { gender, year }
 enum Field {
