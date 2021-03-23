@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:medihub/admin/screen/doclogin.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:medihub/layout.dart';
+import 'package:medihub/provider/progress.dart';
 import 'package:medihub/screens/signup.dart';
 import 'package:medihub/widgets/inputfield.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -15,7 +16,7 @@ class Login extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Color(0XFFC0F9E3),
         body: ModalProgressHUD(
-          inAsyncCall: false, //Provider.of<Spin>(context).getWheel(),
+          inAsyncCall: Provider.of<Spin>(context).getWheel(),
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -102,42 +103,45 @@ class Login extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    // Provider.of<Spin>(context, listen: false)
-                    //     .changeWheel();
-                    final _login = await auth.signInWithEmailAndPassword(
-                        email: Provider.of<UserAccount>(
+                    Provider.of<Spin>(context, listen: false).changeWheel();
+                    try {
+                      final _login = await auth.signInWithEmailAndPassword(
+                          email: Provider.of<UserAccount>(
+                            context,
+                            listen: false,
+                          ).getEmail(),
+                          password: Provider.of<UserAccount>(
+                            context,
+                            listen: false,
+                          ).getPassword());
+                      if (_login != null) {
+                        // SharedPreferences prefs =
+                        //     await SharedPreferences.getInstance();
+                        // prefs.setString(
+                        //   "name",
+                        //   Provider.of<UserAccount>(context, listen: false)
+                        //       .getFirstName(),
+                        // );
+                        Provider.of<Spin>(context, listen: false).changeWheel();
+                        Navigator.push(
                           context,
-                          listen: false,
-                        ).getEmail(),
-                        password: Provider.of<UserAccount>(
-                          context,
-                          listen: false,
-                        ).getPassword());
-                    if (_login != null) {
-                      // Provider.of<Spin>(context, listen: false)
-                      //     .changeWheel();
-                      // SharedPreferences prefs =
-                      //     await SharedPreferences.getInstance();
-                      // prefs.setString(
-                      //     "email",
-                      //     Provider.of<Account>(context, listen: false)
-                      //         .getUser()
-                      //         .email);
-                      // print(prefs.getString("email"));
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Layout(),
-                        ),
-                      );
-                    } else {
-                      print("Invalid field");
+                          MaterialPageRoute(
+                            builder: (context) => Layout(),
+                          ),
+                        );
+                      }
+                      print(_login);
+                    } catch (e) {
+                      Provider.of<Spin>(context, listen: false).changeWheel();
+                      Fluttertoast.showToast(
+                          msg: "Can't login at this time",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Color(0XFF35D4C0),
+                          textColor: Colors.white,
+                          fontSize: 16.0);
                     }
-                    // print("Sign in action");
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => Register()));
                   },
                   child: Container(
                     decoration: BoxDecoration(

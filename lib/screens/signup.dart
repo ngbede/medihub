@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:medihub/admin/screen/doclogin.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:medihub/layout.dart';
+import 'package:medihub/provider/progress.dart';
 import 'package:medihub/screens/login.dart';
 import 'package:medihub/widgets/inputfield.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +9,6 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:medihub/constants.dart';
 import 'package:medihub/models/useraccount.dart';
 
-//TODO:handle email/account already in use exception
 class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Register extends StatelessWidget {
         resizeToAvoidBottomPadding: false,
         backgroundColor: Color(0XFFC0F9E3),
         body: ModalProgressHUD(
-          inAsyncCall: false, // Provider.of<Spin>(context).getWheel(),
+          inAsyncCall: Provider.of<Spin>(context).getWheel(),
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -135,10 +135,7 @@ class Register extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    // if (Provider.of<UserAccount>(context, listen: false)
-                    //     .fieldsNotNull()) {
-                    // Provider.of<Spin>(context, listen: false)
-                    //     .changeWheel();
+                    Provider.of<Spin>(context, listen: false).changeWheel();
                     print("In");
                     try {
                       final _newUser =
@@ -149,11 +146,7 @@ class Register extends StatelessWidget {
                             Provider.of<UserAccount>(context, listen: false)
                                 .getPassword(),
                       );
-                      //For every new user store their additional info in cloud firestore
-
                       if (_newUser != null) {
-                        // Provider.of<Spin>(context, listen: false)
-                        //     .changeWheel();
                         store.collection("users").doc(auth.currentUser.uid).set(
                           {
                             "email": Provider.of<UserAccount>(
@@ -175,6 +168,7 @@ class Register extends StatelessWidget {
                             ).getPhoneNumber(),
                           },
                         );
+                        Provider.of<Spin>(context, listen: false).changeWheel();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -183,10 +177,17 @@ class Register extends StatelessWidget {
                         );
                       }
                     } catch (e) {
-                      print("Hello $e"); //TODO: handle login errors
+                      Provider.of<Spin>(context, listen: false).changeWheel();
+                      Fluttertoast.showToast(
+                          msg: "Can't sign up at this time",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Color(0XFF35D4C0),
+                          textColor: Colors.white,
+                          fontSize: 16.0);
                     }
                   },
-                  // },
                   child: Container(
                     decoration: BoxDecoration(
                       color: Color(0XFF35D4C0),
