@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:medihub/admin/models/doctor.dart';
 import 'package:medihub/models/useraccount.dart';
 import 'package:medihub/provider/prediction.dart';
 import 'package:medihub/provider/progress.dart';
@@ -33,9 +32,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<Spin>(
           create: (_) => Spin(),
         ),
-        // ChangeNotifierProvider<Doctor>(
-        //   create: (_) => Doctor(),
-        // ),
       ],
       child: MaterialApp(
         home: Login(),

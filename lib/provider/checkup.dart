@@ -4,7 +4,6 @@ import 'package:medihub/constants.dart';
 class CheckUp with ChangeNotifier {
   String _gender = "male";
   String _name;
-  //String _phoneNumber;
   int _yearOfBirth = 1970;
   bool _phoneEmpty = true;
   bool _nameEmpty = true;
@@ -40,11 +39,6 @@ class CheckUp with ChangeNotifier {
     notifyListeners();
   }
 
-  // void setPhoneNumber(String number) {
-  //   _phoneNumber = number;
-  //   notifyListeners();
-  // }
-
   void verifyNameInput() {
     if (_name != null) {
       if (_name.isNotEmpty) {
@@ -56,17 +50,6 @@ class CheckUp with ChangeNotifier {
     }
   }
 
-  // void verifyPhoneInput() {
-  //   if (_phoneNumber != null) {
-  //     if (_phoneNumber.isNotEmpty && _phoneNumber.length == 11) {
-  //       _phoneEmpty = false;
-  //     } else {
-  //       _phoneEmpty = true;
-  //     }
-  //     notifyListeners();
-  //   }
-  // }
-
   void validate() {
     _validated = true;
   }
@@ -74,7 +57,6 @@ class CheckUp with ChangeNotifier {
   String getGender() => _gender;
   String getName() => _name;
   int getYearOfBirth() => _yearOfBirth;
-  // String getPhoneNumber() => _phoneNumber;
   Map<int, Map> getSymptoms() => _mySymptoms;
   bool getNameEmpty() => _nameEmpty;
   bool getPhoneEmpty() => _phoneEmpty;

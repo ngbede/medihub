@@ -5,7 +5,6 @@ import 'package:medihub/screens/confirm.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-// TODO: Refactor code
 class SelectSymptoms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -56,7 +55,7 @@ class SelectSymptoms extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
               elevation: 5.0,
-              color: Color(0XFF35D4C0), //Color(0XFF0B0B0B),
+              color: Color(0XFF35D4C0),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(

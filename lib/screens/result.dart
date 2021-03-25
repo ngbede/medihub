@@ -122,7 +122,6 @@ class MedicalDiagnosis extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    // name each diagnosis history document using the users ID
                     try {
                       await store.collection("diagnosisHistory").add(
                         {
@@ -147,12 +146,8 @@ class MedicalDiagnosis extends StatelessWidget {
                                   .getPredictionJson()[0]["Issue"]["IcdName"],
                           "symptoms": userSymptomsList,
                           "userId": auth.currentUser.uid,
-
-                          // "contact": Provider.of<CheckUp>(context, listen: false)
-                          //     .getPhoneNumber(),
                         },
                       );
-                      //resetKeys();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -213,7 +208,6 @@ class MedicalDiagnosis extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    //resetKeys();
                     Navigator.push(
                       context,
                       MaterialPageRoute(

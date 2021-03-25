@@ -1,4 +1,3 @@
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:medihub/constants.dart';
@@ -28,7 +27,6 @@ class Diagnosis extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: ListView(
-              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InputField(
                   hint: "Name",
@@ -73,8 +71,6 @@ class Diagnosis extends StatelessWidget {
                   onTap: () {
                     Provider.of<CheckUp>(context, listen: false)
                         .verifyNameInput();
-                    // Provider.of<CheckUp>(context, listen: false)
-                    //     .verifyPhoneInput();
                     Provider.of<CheckUp>(context, listen: false).validate();
                     if (Provider.of<CheckUp>(context, listen: false)
                             .getNameEmpty() ==

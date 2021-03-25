@@ -285,8 +285,6 @@ enum Field {
   phoneNumber,
   email,
   password,
-//  docId,
-//  docPassword
 }
 
 final FirebaseAuth auth = FirebaseAuth.instance;

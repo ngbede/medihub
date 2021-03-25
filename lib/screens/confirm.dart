@@ -8,9 +8,7 @@ import 'package:flutter_tags/flutter_tags.dart';
 import 'package:medihub/services/network.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:medihub/widgets/aligninfo.dart';
-//import 'package:medihub/constants.dart';
 
-// TODO: Refactor code
 class Confirmation extends StatelessWidget {
   final List<String> userSymptomsList;
   Confirmation({@required this.userSymptomsList});
@@ -49,7 +47,6 @@ class Confirmation extends StatelessWidget {
                     horizontal: 10.0,
                   ),
                   child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.,
                     children: [
                       AlignInfo(
                         name: "Name",
@@ -167,24 +164,6 @@ class Confirmation extends StatelessWidget {
                 } catch (e) {
                   print(e);
                 }
-
-                //  else {
-                //   print("from Provider");
-                //   print(
-                //     Provider.of<Prediction>(context, listen: false)
-                //         .getPredictionJson(),
-                //   );
-                //   Provider.of<Prediction>(context, listen: false)
-                //       .showModalHud();
-                //   Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => MedicalDiagnosis(
-                //         userSymptomsList: userSymptomsList,
-                //       ),
-                //     ),
-                //   );
-                // }
               },
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 50.0),

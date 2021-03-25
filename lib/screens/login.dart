@@ -115,13 +115,6 @@ class Login extends StatelessWidget {
                             listen: false,
                           ).getPassword());
                       if (_login != null) {
-                        // SharedPreferences prefs =
-                        //     await SharedPreferences.getInstance();
-                        // prefs.setString(
-                        //   "name",
-                        //   Provider.of<UserAccount>(context, listen: false)
-                        //       .getFirstName(),
-                        // );
                         Provider.of<Spin>(context, listen: false).changeWheel();
                         Navigator.push(
                           context,
