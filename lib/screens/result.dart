@@ -168,7 +168,7 @@ class MedicalDiagnosis extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(horizontal: 100, vertical: 20),
                       child: Text(
-                        "SAVE",
+                        "Book Appointment",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,

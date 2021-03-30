@@ -178,6 +178,7 @@ class Confirmation extends StatelessWidget {
                         EdgeInsets.symmetric(horizontal: 100, vertical: 20),
                     child: Text(
                       "GET DIAGNOSIS",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
